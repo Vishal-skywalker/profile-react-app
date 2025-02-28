@@ -2,9 +2,10 @@ import { useState } from 'react'
 import Nav from './Nav'
 import Projects from './Projects'
 import Schools from './Schools'
+import Certifications from './Certifications'
 
 export default function Content() {
-  const tabs = ['Projects', 'Education', 'Employment'];
+  const tabs = ['Projects', 'Education', 'Employment', 'Skills', 'Certifications'];
   const [activeTab, setActiveTab] = useState('Projects');
   function renderContent(activeTab) {
     switch (activeTab) {
@@ -13,6 +14,8 @@ export default function Content() {
       case 'Education':
       case 'Employment':
         return <Schools queryKey={activeTab}/>;
+      case 'Certifications':
+        return <Certifications />;
       default:
         return <div>Select a tab to see content!</div>;
     }
