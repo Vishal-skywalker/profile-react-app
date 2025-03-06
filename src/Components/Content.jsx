@@ -3,9 +3,10 @@ import Nav from './Nav'
 import Projects from './Projects'
 import Schools from './Schools'
 import Certifications from './Certifications'
+import Skills from './Skills'
 
 export default function Content() {
-  const tabs = ['Projects', 'Education', 'Employment', 'Skills', 'Certifications'];
+  const tabs = ['Projects', 'Skills', 'Education', 'Employment', 'Certifications'];
   const [activeTab, setActiveTab] = useState('Projects');
   function renderContent(activeTab) {
     switch (activeTab) {
@@ -16,6 +17,8 @@ export default function Content() {
         return <Schools queryKey={activeTab}/>;
       case 'Certifications':
         return <Certifications />;
+      case 'Skills':
+        return <Skills />;
       default:
         return <div>Select a tab to see content!</div>;
     }

@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css'
 import Content from './Components/Content'
 import Profile from './Components/Profile'
+import MessageDrop from './Components/MessageDrop'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <div className="w-full md:w-7/10 h-auto md:h-screen md:overflow-auto p-4">
         <Content />
       </div>
+      <MessageDrop />
     </div>
 
   )
