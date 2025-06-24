@@ -1,0 +1,51 @@
+name: Fetch API Data & Deploy
+
+on:
+  push:
+    branches: [main]
+
+  workflow_dispatch:
+    inputs:
+      endpoint:
+        description: 'API endpoint to fetch (e.g., profile, projects, skills)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Fetch API and Save to File
+        run: |
+          ENDPOINT="${{ github.event.inputs.endpoint }}"
+          mkdir -p public/data
+          curl -s "https://personalproject6-dev-ed.develop.my.salesforce-sites.com/api/services/apexrest/v1/${ENDPOINT}" \
+            -o "public/data/${ENDPOINT}.json"
+
+      - name: Commit API Data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/*.json
+          git commit -m "chore: update API data for ${{ github.event.inputs.endpoint }}" || echo "No changes to commit"
+          git push
+
+      # - name: Deploy to GitHub Pages
+      #   run: npm run deploy
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
