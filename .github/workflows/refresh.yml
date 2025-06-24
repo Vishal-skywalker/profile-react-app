@@ -37,8 +37,8 @@ jobs:
 
       - name: Commit API Data
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "Vishal-skywalker"
+          git config user.email "das.vishal8583@gmail.com"
           git add src/data/*.json
           git commit -m "chore: update API data for ${{ github.event.inputs.endpoint }}" || echo "No changes to commit"
           git push
