@@ -9,7 +9,6 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist -u \"Vishal-skywalker <das.vishal8583@gmail.com>\" --repo=https://x-access-token:${GITHUB_TOKEN}@github.com/Vishal-skywalker/profile-react-app.git"
   },
   "dependencies": {
