@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -u \"github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\" --repo=https://x-access-token:${GITHUB_TOKEN}@github.com/Vishal-skywalker/profile-react-app.git"
+    "deploy": "gh-pages -d dist -u \"Vishal-skywalker <das.vishal8583@gmail.com>\" --repo=https://x-access-token:${GITHUB_TOKEN}@github.com/Vishal-skywalker/profile-react-app.git"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
