@@ -16,6 +16,7 @@ permissions:
 
 jobs:
   fetch-and-deploy:
+    if: ${{ github.event.inputs.endpoint != '' }}
     runs-on: ubuntu-latest
 
     steps:
