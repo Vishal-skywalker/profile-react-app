@@ -1,27 +1,34 @@
 const baseUrl = 'https://personalproject6-dev-ed.develop.my.salesforce-sites.com/api/services/apexrest/v1';
 
+import projects from '../data/projects.json';
+import schools from '../data/schools.json';
+import profile from '../data/profile.json';
+import employer from '../data/employer.json';
+import skills from '../data/skills.json';
+import certifications from '../data/certifications.json';
+
 export function getProjects() {
-    return get('projects');
+    return projects ?? get('projects');
 }
 
 export function getSchools() {
-    return get('schools');
+    return schools ?? get('schools');
 }
 
 export function getProfile() {
-    return get('profile');
+    return profile ?? get('profile');
 }
 
 export function getEmployment() {
-    return get('employer');
+    return employer ?? get('employer');
 }
 
 export function getSkills() {
-    return get('skills');
+    return skills ?? get('skills');
 }
 
 export function getCertifications() {
-    return get('certifications');
+    return certifications ?? get('certifications');
 }
 
 export function sendMessage(body) {

@@ -31,19 +31,19 @@ jobs:
       - name: Fetch API and Save to File
         run: |
           ENDPOINT="${{ github.event.inputs.endpoint }}"
-          mkdir -p public/data
+          mkdir -p src/data
           curl -s "https://personalproject6-dev-ed.develop.my.salesforce-sites.com/api/services/apexrest/v1/${ENDPOINT}" \
-            -o "public/data/${ENDPOINT}.json"
+            -o "src/data/${ENDPOINT}.json"
 
       - name: Commit API Data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/*.json
+          git add src/data/*.json
           git commit -m "chore: update API data for ${{ github.event.inputs.endpoint }}" || echo "No changes to commit"
           git push
 
-      # - name: Deploy to GitHub Pages
-      #   run: npm run deploy
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to GitHub Pages
+        run: npm run deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
