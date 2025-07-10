@@ -35,6 +35,12 @@ jobs:
           curl -s "https://personalproject6-dev-ed.develop.my.salesforce-sites.com/api/services/apexrest/v1/${ENDPOINT}" \
             -o "src/data/${ENDPOINT}.json"
 
+      - name: Process Certifications Badges (if applicable)
+        if: ${{ github.event.inputs.endpoint == 'certifications' }}
+        run: |
+          node .github/scripts/processCertifications.js "src/data/certifications.json" "public/badges"
+
+
       - name: Commit API Data
         run: |
           git config user.name "Vishal-skywalker"
